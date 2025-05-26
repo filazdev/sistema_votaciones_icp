@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+}
+
+.container {
+    max-width: 960px; /* Aumentado para acomodar 3 columnas cómodamente */
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 25px; /* Ajuste de margen para separar */
+}
+
+form {
+    margin-bottom: 24px;
+}
+
+label {
+    /* Estas reglas generales para label son menos específicas y pueden ser sobrescritas */
+    display: block; 
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 24px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-top: 20px; /* Separar el botón de votar de los recuadros de candidatos */
+}
+button:hover {
+    background: #0056b3;
+}
+
+#mensaje {
+    margin: 16px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+#resultados {
+    margin-top: 32px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background: #f0f0f0;
+}
+
+/* --- ESTILOS CRUCIALES PARA EL LAYOUT DE COLUMNAS Y SCROLL --- */
+
+/* Contenedor principal para los rubros de candidatos (Presidente, Diputado, Senador) */
+.candidatos-rubros {
+    display: flex; /* Habilita Flexbox para la alineación horizontal */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas más pequeñas */
+    gap: 20px; /* Espacio entre los recuadros de candidatos */
+    justify-content: center; /* Centra los recuadros si no llenan todo el ancho */
+    margin-bottom: 20px; /* Espacio debajo de los recuadros */
+}
+
+/* Estilos para cada recuadro individual (Presidente, Diputado, Senador) */
+.rubro-candidatos {
+    flex: 1; /* Permite que cada rubro crezca y ocupe el espacio disponible */
+    min-width: 280px; /* Ancho mínimo para cada recuadro antes de envolverse */
+    max-width: 32%; /* Aproximadamente 3 por fila, dejando espacio para el gap */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+    margin-bottom: 20px; /* Espacio inferior para cuando se envuelvan (en pantallas pequeñas) */
+}
+
+.rubro-candidatos strong {
+    display: block; /* Asegura que el título del cargo ocupe su propia línea */
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Estilos para la lista de candidatos dentro de cada recuadro (con scroll) */
+.candidatos.scrollable-list { /* Esta clase es importante para aplicar el scroll */
+    max-height: 200px; /* ALTURA FIJA: Ajusta esto según lo desees */
+    overflow-y: auto; /* Habilita el scroll vertical si el contenido excede la altura */
+    border: 1px solid #ddd; /* Borde para el recuadro de la lista */
+    padding: 15px; /* Relleno interno */
+    border-radius: 5px;
+    background-color: #fcfcfc;
+    
+    /* Para navegadores Webkit (Chrome, Safari) - personalización del scrollbar */
+    scrollbar-width: thin; /* "auto" o "thin" */
+    scrollbar-color: #888 #f1f1f1; /* color del pulgar y pista */
+}
+
+.candidatos.scrollable-list::-webkit-scrollbar {
+    width: 8px;
+}
+.candidatos.scrollable-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.candidatos.scrollable-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.candidatos.scrollable-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Estilo para cada item de candidato (dentro del scrollable-list) */
+.candidato-item {
+  margin-bottom: 8px; /* Espacio vertical entre cada candidato */
+  padding-bottom: 5px; /* Pequeño padding para el borde inferior si se desea */
+  border-bottom: 1px dotted #eee; /* Línea divisoria sutil */
+}
+
+.candidato-item:last-child {
+  border-bottom: none; /* Eliminar la línea divisoria del último elemento */
+  margin-bottom: 0;
+}
+
+/* Conflicto resuelto: Esta regla asegura que cada radio button y su label se muestren en bloque y sin margen derecho */
+.candidato-item label {
+    display: block; /* Asegura que la etiqueta se comporte como un bloque */
+    margin-right: 0; /* Elimina el margen derecho si estaba separando horizontalmente */
+}
+
+/* Se elimina o se sobrescribe la regla anterior:
+.candidatos label {
+  margin-right: 16px;
+  font-weight: normal;
+}
+La regla más específica (.candidato-item label) es la que se aplica.
+Si tienes esta regla en tu styles.css, puedes eliminarla o simplemente dejarla.
+*/
