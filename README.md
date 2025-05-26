@@ -35,6 +35,7 @@ La elección de la Internet Computer Protocol (ICP) como infraestructura subyace
 ---
 
 ## Estructura del Proyecto
+```
 sistema_votaciones/
 ├── .dfx/
 ├── node_modules/
@@ -56,6 +57,7 @@ sistema_votaciones/
 ├── dfx.json                      # Configuración del DFINITY SDK
 ├── package.json                  # Dependencias de Node.js
 └── README.md                     # Este archivo
+```
 
 ---
 
